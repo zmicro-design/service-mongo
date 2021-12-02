@@ -1,0 +1,44 @@
+#!/bin/bash
+
+load inquirer
+
+check() {
+  config::load_file $SERVICE_CONFIG
+
+  if [ -z "$SERVICE_MONGO_HOST" ]; then
+    inquirer::text "请输入 SERVICE_MONGO_HOST:" value
+    config::set SERVICE_MONGO_HOST $value $SERVICE_CONFIG
+  fi
+
+  if [ -z "$SERVICE_MONGO_PORT" ]; then
+    inquirer::text "请输入 SERVICE_MONGO_PORT:" value
+    config::set SERVICE_MONGO_PORT $value $SERVICE_CONFIG
+  fi
+
+  if [ -z "$SERVICE_MONGO_USER" ]; then
+    inquirer::text "请输入 SERVICE_MONGO_USER:" value
+    config::set SERVICE_MONGO_USER $value $SERVICE_CONFIG
+  fi
+
+  if [ -z "$SERVICE_MONGO_PASSWORD" ]; then
+    inquirer::text "请输入 SERVICE_MONGO_PASSWORD:" value
+    config::set SERVICE_MONGO_PASSWORD $value $SERVICE_CONFIG
+  fi
+
+  if [ -z "$SERVICE_MONGO_DB" ]; then
+    inquirer::text "请输入 SERVICE_MONGO_DB:" value
+    config::set SERVICE_MONGO_DB $value $SERVICE_CONFIG
+  fi
+  
+  # @TODO load again
+  config::load_file $SERVICE_CONFIG
+
+  # @TODO
+  export SERVICE_MONGO_HOST=$SERVICE_MONGO_HOST
+  export SERVICE_MONGO_PORT=$SERVICE_MONGO_PORT
+  export SERVICE_MONGO_USER=$SERVICE_MONGO_USER
+  export SERVICE_MONGO_PASSWORD=$SERVICE_MONGO_PASSWORD
+  export SERVICE_MONGO_DB=$SERVICE_MONGO_DB
+}
+
+check $@
