@@ -15,9 +15,9 @@ check() {
     config::set SERVICE_MONGO_PORT $value $SERVICE_CONFIG
   fi
 
-  if [ -z "$SERVICE_MONGO_USER" ]; then
-    inquirer::text "请输入 SERVICE_MONGO_USER:" value
-    config::set SERVICE_MONGO_USER $value $SERVICE_CONFIG
+  if [ -z "$SERVICE_MONGO_USERNAME" ]; then
+    inquirer::text "请输入 SERVICE_MONGO_USERNAME:" value
+    config::set SERVICE_MONGO_USERNAME $value $SERVICE_CONFIG
   fi
 
   if [ -z "$SERVICE_MONGO_PASSWORD" ]; then
@@ -36,7 +36,7 @@ check() {
   # @TODO
   export SERVICE_MONGO_HOST=$SERVICE_MONGO_HOST
   export SERVICE_MONGO_PORT=$SERVICE_MONGO_PORT
-  export SERVICE_MONGO_USER=$SERVICE_MONGO_USER
+  export SERVICE_MONGO_USERNAME=$SERVICE_MONGO_USERNAME
   export SERVICE_MONGO_PASSWORD=$SERVICE_MONGO_PASSWORD
   export SERVICE_MONGO_DB=$SERVICE_MONGO_DB
 }
