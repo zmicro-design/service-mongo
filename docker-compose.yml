@@ -12,7 +12,7 @@ services:
       MONGO_INITDB_DATABASE: ${SERVICE_MONGO_DB}
     volumes:
       - type: bind
-        source: ${SERVICE_DATA}/data
+        source: ${SERVICE_DATA}
         target: /data/db
 
 networks:
